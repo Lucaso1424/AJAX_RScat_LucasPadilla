@@ -1,6 +1,6 @@
 # Projecte M06-UF4 → AJAX_RScat_LucasPadilla
 
-![captura_git](https://user-images.githubusercontent.com/58809030/109426820-cc7fbc00-79ef-11eb-9db7-eb1e03924828.png)
+![imagen](https://user-images.githubusercontent.com/58809030/111370826-f8aa6680-8698-11eb-8769-46ae2ab94ba3.png)
 
 1. Indicacions
 
