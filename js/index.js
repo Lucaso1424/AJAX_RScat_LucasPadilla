@@ -28,6 +28,7 @@ function llamadaJSON() {
 }
 
 function imprimirTabla(data) {
+    // CREAMOS EL FORMULARIO DINAMICAMENTE
     let tabla = document.createElement("table");
     tabla.setAttribute("class", "tabla");
     tabla.setAttribute("id", "imprimir_tabla");
@@ -43,15 +44,18 @@ function imprimirTabla(data) {
             let td = document.createElement("td");
             td.setAttribute("class", "td_class");
 
-            // CON EL innerText
+            // CON EL innerText, AÑADIMOS EN EL td CADA VALOR Y LAS CLAVES DEL JSON
             td.innerText = data[i][clave];
             
+            // IMPRIMIMOS EL TD CON EL APPENDCHILD
             col.appendChild(td);
             console.log("Se imprime la tabla");
         });
         
+        // IMPRIMIMOS LA COLUMNA CON EL APPENDCHILD
         tabla.appendChild(col);       
     }
+    // HACEMOS UN APPENDCHILD DE LA TABLA DINAMICAMENTE UTILIZANDO EL DIV CON EL ID 
     document.getElementById("imprimir_tabla").appendChild(tabla);   
 }
 
