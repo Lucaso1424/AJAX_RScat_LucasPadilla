@@ -67,3 +67,17 @@ button:hover {
 body {
     background-color: rgb(219, 195, 228);
 }
+
+/* RESPONSIVE */
+
+@media screen and (min-width:800px) {
+    body {
+        font-size: 100%;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    body {
+        font-size: 120%;
+    }
+}
