@@ -20,7 +20,7 @@ function llamadaJSON() {
             "sector": "Industrial"
         }
     }).done(function (data) {
-        alert("Se han recogido " + data.length + " datos de la base de datos!");
+        alert("Se han recogido " + data.length + " datos del JSON!");
         console.log(data);
         // LLAMAMOS A LA FUNCIÓN PASANDOLE EL DATA (EL JSON)
         imprimirTabla(data);
