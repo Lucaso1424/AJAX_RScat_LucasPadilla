@@ -17,7 +17,7 @@ function llamadaJSON() {
             "$limit": 1000,
             "$$app_token": "EIsAhk53hwzCPMmgS0dA44ulq",
             // APLICAMOS UN FILTRO DE LA CLAVE DEL JSON
-            "sector": "Industrial"
+            //"sector": "Industrial"
         }
     }).done(function (data) {
         alert("Se han recogido " + data.length + " datos de la base de datos!");
@@ -41,9 +41,6 @@ function imprimirTabla(data) {
 
         // LE PASAMOS POR EL FOREACH, UNA CLAVE, DEL OBJECT.KEY (DEL ARRAY DEL JSON)
         Object.keys(data[i]).forEach(function (clave) {
-            if (clave == "geocoded_column") {
-                console.log(".")
-            }
             let td = document.createElement("td");
             td.setAttribute("class", "td_class");
 
