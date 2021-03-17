@@ -17,7 +17,7 @@ function llamadaJSON() {
             "$limit": 1000,
             "$$app_token": "EIsAhk53hwzCPMmgS0dA44ulq",
             // APLICAMOS UN FILTRO DE LA CLAVE DEL JSON
-            //"sector": "Industrial"
+            "sector": "Industrial"
         }
     }).done(function (data) {
         alert("Se han recogido " + data.length + " datos de la base de datos!");
