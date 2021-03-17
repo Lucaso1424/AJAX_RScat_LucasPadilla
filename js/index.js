@@ -17,7 +17,7 @@ function llamadaJSON() {
             "$limit": 1000,
             "$$app_token": "EIsAhk53hwzCPMmgS0dA44ulq",
             // APLICAMOS UN FILTRO DE LA CLAVE DEL JSON
-            "sector": "Educació"
+            "sector": "Industrial"
         }
     }).done(function (data) {
         alert("Se han recogido " + data.length + " datos de la base de datos!");
@@ -40,23 +40,25 @@ function imprimirTabla(data) {
         col.setAttribute("id", i);
 
         // LE PASAMOS POR EL FOREACH, UNA CLAVE, DEL OBJECT.KEY (DEL ARRAY DEL JSON)
-        Object.keys(data[i]).forEach(function(clave) {
+        Object.keys(data[i]).forEach(function (clave) {
+            if (clave == "geocoded_column") {
+                console.log(".")
+            }
             let td = document.createElement("td");
             td.setAttribute("class", "td_class");
 
             // CON EL innerText, AÑADIMOS EN EL td CADA VALOR Y LAS CLAVES DEL JSON
             td.innerText = data[i][clave];
-            
+
             // IMPRIMIMOS EL TD CON EL APPENDCHILD
             col.appendChild(td);
-            console.log("Se imprime la tabla");
         });
-        
+
         // IMPRIMIMOS LA COLUMNA CON EL APPENDCHILD
-        tabla.appendChild(col);       
+        tabla.appendChild(col);
     }
     // HACEMOS UN APPENDCHILD DE LA TABLA DINAMICAMENTE UTILIZANDO EL DIV CON EL ID 
-    document.getElementById("imprimir_tabla").appendChild(tabla);   
+    document.getElementById("imprimir_tabla").appendChild(tabla);
 }
 
 function ocultarBoton() {
