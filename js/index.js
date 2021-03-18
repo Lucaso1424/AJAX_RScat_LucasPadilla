@@ -1,3 +1,5 @@
+var contador;
+
 window.onload = function () {
     let llamada = document.getElementById("llamada");
     llamada.addEventListener("click", llamadaJSON);
@@ -24,6 +26,13 @@ function llamadaJSON() {
         console.log(data);
         // LLAMAMOS A LA FUNCIÓN PASANDOLE EL DATA (EL JSON)
         imprimirTabla(data);
+
+        // CARGAMOS LAS APIS DE GOOGLE DEL PACKAGE CORECHART
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        // CARGAMOS UN CALLBACK PARA CUANDO LAS APIS DE GOOGLE ESTÉN CARGADAS
+        google.charts.setOnLoadCallback(drawChart);
     });
 }
 
@@ -35,6 +44,7 @@ function imprimirTabla(data) {
 
     // RECORREMOS EL FOR POR CADA VALOR DEL JSON
     for (let i = 0; i < data.length; i++) {
+        contador++;
         let col = document.createElement("tr");
         col.setAttribute("class", "columna");
         col.setAttribute("id", i);
@@ -56,8 +66,33 @@ function imprimirTabla(data) {
     }
     // HACEMOS UN APPENDCHILD DE LA TABLA DINAMICAMENTE UTILIZANDO EL DIV CON EL ID 
     document.getElementById("imprimir_tabla").appendChild(tabla);
+    console.log(contador);
 }
 
 function ocultarBoton() {
     document.getElementById("boton").innerHTML = "";
+}
+
+function drawChart() {
+    // CREAMOS LA VARIABLE DATA PARA UTILIZAR EL DATA_TABLE
+    var data_table = new google.visualization.DataTable();
+    data_table.addColumn('string', 'Topping');
+    data_table.addColumn('number', 'Slices');
+    data_table.addRows([
+        ['Holo', 1],
+        ['sad', 34],
+        ['sad', 23],
+        ['sd', 13]
+    ]);
+
+    // DEFINIMOS LOS ATRIBUTOS DE LA GRÁFICA
+    var options = {
+        'title': 'Las masas con sus pipsas',
+        'width': 400,
+        'height': 300
+    };
+
+    // DIBUJA LAS GRÁFICAS CON EL PieChart, PASANDOLE UN document-getElementById DEL DIV PARA IMPRIMIR
+    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+    chart.draw(data_table, options);
 }
