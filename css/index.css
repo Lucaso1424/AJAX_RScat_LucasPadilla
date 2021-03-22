@@ -62,8 +62,10 @@ footer {
     padding:12px;
 }
 
+/* DIV DEL GRÁFICO CENTRADO */
 #chart_div {
-    margin: auto;
+    margin: 0 auto;
+    max-width: 430px;
 }
 
 button {
