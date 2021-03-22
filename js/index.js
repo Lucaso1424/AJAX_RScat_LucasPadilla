@@ -79,13 +79,13 @@ function drawChart(data) {
 
     // RECORREMOS EL FOR POR CADA VALOR DEL JSON
     for (let i = 0; i < data.length; i++) {
-        if (data[i][2].sector == "Industrial") {
+        if (data[i].sector == "Industrial") {
             sector++;
         }
-        if (data[i][1].dimensi_petita == "Petita (entre 10 i 49 treballadors/es)") {
+        if (data[i].dimensi_petita == "Petita (entre 10 i 49 treballadors/es)") {
             dimensi_petita++;
         }
-        if (data[i][1].dimensi_gran == "Gran (250 treballadors/es o més)") {
+        if (data[i].dimensi_gran == "Gran (250 treballadors/es o més)") {
             dimensi_gran++;
         }
     }
