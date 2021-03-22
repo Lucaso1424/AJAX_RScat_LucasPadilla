@@ -28,9 +28,13 @@ function llamadaJSON() {
         imprimirTabla(data);
 
         // CARGAMOS LAS APIS DE GOOGLE DEL PACKAGE CORECHART
-        google.charts.load('current', {'packages': ['corechart'] });
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
         // CARGAMOS UN CALLBACK PARA CUANDO LAS APIS DE GOOGLE ESTÉN CARGADAS
-        google.charts.setOnLoadCallback(drawChart(data));
+        google.charts.setOnLoadCallback(function () {
+            drawChart(data)
+        });
     });
 }
 
@@ -73,34 +77,27 @@ function ocultarBoton() {
 
 function drawChart(data) {
     // DECLARAMOS LOS LET DE LOS VALORES DE LOS GRÁFICOS
-    let dimensi_gran;
-    let dimensi_petita;
-    let sector;
+    let sector1 = null;
+    let sector2 = null;
 
+    console.log(data[0].sector)
     // RECORREMOS EL FOR POR CADA VALOR DEL JSON
     for (let i = 0; i < data.length; i++) {
         if (data[i].sector == "Industrial") {
-            sector++;
-        }
-        if (data[i].dimensi_petita == "Petita (entre 10 i 49 treballadors/es)") {
-            dimensi_petita++;
-        }
-        if (data[i].dimensi_gran == "Gran (250 treballadors/es o més)") {
-            dimensi_gran++;
-        }
+            sector1++;
+        } 
+        console.log(sector1);
     }
 
     // CREAMOS LA VARIABLE DATA PARA UTILIZAR EL DATA_TABLE
     var data_table = google.visualization.arrayToDataTable([
         ['Chart', 'Chart de sectors industrial'],
-        ['Sector industrial', sector],
-        ['Dimensió gran', dimensi_gran],
-        ['Dimensió petita', dimensi_petita]
+        ['Sector industrial', sector1]
     ]);
 
     // DEFINIMOS LOS ATRIBUTOS DE LA GRÁFICA
     var options = {
-        'title': 'Las masas con sus pipsas',
+        'title': 'Gràfic amb els sector de Serveis',
         'width': 400,
         'height': 300,
         is3D: true
