@@ -28,11 +28,9 @@ function llamadaJSON() {
         imprimirTabla(data);
 
         // CARGAMOS LAS APIS DE GOOGLE DEL PACKAGE CORECHART
-        google.charts.load('current', {
-            'packages': ['corechart']
-        });
+        google.charts.load('current', {'packages': ['corechart'] });
         // CARGAMOS UN CALLBACK PARA CUANDO LAS APIS DE GOOGLE ESTÉN CARGADAS
-        google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(drawChart(data));
     });
 }
 
@@ -73,23 +71,39 @@ function ocultarBoton() {
     document.getElementById("boton").innerHTML = "";
 }
 
-function drawChart() {
+function drawChart(data) {
+    // DECLARAMOS LOS LET DE LOS VALORES DE LOS GRÁFICOS
+    let dimensi_gran;
+    let dimensi_petita;
+    let sector;
+
+    // RECORREMOS EL FOR POR CADA VALOR DEL JSON
+    for (let i = 0; i < data.length; i++) {
+        if (data[i][2].sector == "Industrial") {
+            sector++;
+        }
+        if (data[i][1].dimensi_petita == "Petita (entre 10 i 49 treballadors/es)") {
+            dimensi_petita++;
+        }
+        if (data[i][1].dimensi_gran == "Gran (250 treballadors/es o més)") {
+            dimensi_gran++;
+        }
+    }
+
     // CREAMOS LA VARIABLE DATA PARA UTILIZAR EL DATA_TABLE
-    var data_table = new google.visualization.DataTable();
-    data_table.addColumn('string', 'Topping');
-    data_table.addColumn('number', 'Slices');
-    data_table.addRows([
-        ['Holo', 1],
-        ['sad', 34],
-        ['sad', 23],
-        ['sd', 13]
+    var data_table = google.visualization.arrayToDataTable([
+        ['Chart', 'Chart de sectors industrial'],
+        ['Sector industrial', sector],
+        ['Dimensió gran', dimensi_gran],
+        ['Dimensió petita', dimensi_petita]
     ]);
 
     // DEFINIMOS LOS ATRIBUTOS DE LA GRÁFICA
     var options = {
         'title': 'Las masas con sus pipsas',
         'width': 400,
-        'height': 300
+        'height': 300,
+        is3D: true
     };
 
     // DIBUJA LAS GRÁFICAS CON EL PieChart, PASANDOLE UN document-getElementById DEL DIV PARA IMPRIMIR
