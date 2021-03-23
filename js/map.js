@@ -10,17 +10,6 @@ function cargarMapaLeaflet() {
         }
     });
 
-    let latitud_mapa;
-    let longitud_mapa;
-
-    // for (let i = 0; i < data.length; i++) {
-    //     data[i].latitud = latitud_mapa;
-    //     data[i].longitud = longitud_mapa;
-    // }
-    // let coordenadas = [{
-        
-    // }]
-
     const tilesProvider = "https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png";
 
     // DECLARAMOS UNA VARIABLE DONDE DEFINIMOS EL ID DEL DIV PARA IMPRIMIT EL MAPA, Y 
