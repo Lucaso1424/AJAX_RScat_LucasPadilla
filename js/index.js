@@ -98,7 +98,7 @@ function drawChart(data) {
         if (data[i].sector == "Farmacèutic") {
             sector4++;
         }
-        if (data[i].sector == "Farmacèutic") {
+        if (data[i].sector == "Educació") {
             sector5++;
         }
     }
