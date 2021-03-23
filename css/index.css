@@ -59,13 +59,18 @@ footer {
 }
 
 .container_footer {
-    padding:12px;
+    padding: 12px;
 }
 
 /* DIV DEL GRÁFICO CENTRADO */
 #chart_div {
     margin: 0 auto;
     max-width: 430px;
+}
+
+/* CSS MAPA */
+#myMap {
+    height: 400px;
 }
 
 button {

@@ -26,6 +26,7 @@ function llamadaJSON() {
         console.log(data);
         // LLAMAMOS A LA FUNCIÓN PASANDOLE EL DATA (EL JSON)
         imprimirTabla(data);
+        cargarMapaLeaflet(data);
 
         // CARGAMOS LAS APIS DE GOOGLE DEL PACKAGE CORECHART
         google.charts.load('current', {
@@ -34,7 +35,7 @@ function llamadaJSON() {
         // CARGAMOS UN CALLBACK PARA CUANDO LAS APIS DE GOOGLE ESTÉN CARGADAS, LO LANZAMOS EN UNA FUNCIÓN ANÓNIMA
         // PARA PASAR COMO PARÁMETRO EL data (DATOS DEL JSON)
         google.charts.setOnLoadCallback(function () {
-            drawChart(data)
+            drawChart(data);
         });
     });
 }
@@ -93,7 +94,7 @@ function drawChart(data) {
             sector2++;
         }
         if (data[i].sector == "Financer") {
-            sector3++;
+            sector3++;  
         }
         if (data[i].sector == "Farmacèutic") {
             sector4++;
