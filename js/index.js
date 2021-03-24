@@ -20,7 +20,6 @@ function llamadaJSON() {
             "$$app_token": "EIsAhk53hwzCPMmgS0dA44ulq",
             // APLICAMOS UN FILTRO DE LA CLAVE DEL JSON
             "dimensi": "Gran (250 treballadors/es o més)"
-
         }
     }).done(function (data) {
         alert("S'han recollit " + data.length + " dades/entrades del JSON!");
