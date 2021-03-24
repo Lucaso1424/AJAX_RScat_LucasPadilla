@@ -1,3 +1,4 @@
+// CARGAMOS EL data DEL JSON DEL opendata
 function cargarMapaLeaflet(data) {
     const tilesProvider = "https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png";
 
@@ -11,7 +12,7 @@ function cargarMapaLeaflet(data) {
 
     // DECLARAMOS UNA VARIABLE DONDE DEFINIMOS EL ID DEL DIV PARA IMPRIMIT EL MAPA, Y 
     // AÑADIMOS LAS COORDENADAS CON EL setView (PRIMER PARAMETRO, LATITUD Y LONGITUD, SEGUNDO PARAMETRO EL SUM)
-    let myMap = L.map('myMap').setView([41.392109, 2.170840], 13);
+    const myMap = L.map('myMap').setView([41.392109, 2.170840], 13);
 
     L.tileLayer(tilesProvider, {
         // ZOOM DEL MAPA DEL LEAFLET
@@ -19,12 +20,14 @@ function cargarMapaLeaflet(data) {
         // LO AÑADIMOS A LA VARIABLE DE myMaps
     }).addTo(myMap);
 
+    console.log(datos);
+
+    // RECORREMOS CON UN forEach CADA ARRAY DEL DATOS Y SE MARCA CON EL L.marker()
     datos.forEach((element) => {
         const marker = L.marker([element[0], element[1]], {
+            // AÑADIMOS EL TITULO CON EL data[i].nom, UTILIZANDO EL datos
             title: element[2],
+            // FINALMENTE, LO AÑADIMOS AL myMap CON addTo
         }).addTo(myMap);
     });
-
-    // DESHABILITAMOS EL ZOOM CON DBLCLICK
-    myMap.doubleClickZoom.disable();
 }

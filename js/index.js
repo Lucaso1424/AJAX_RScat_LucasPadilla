@@ -41,6 +41,7 @@ function llamadaJSON() {
     });
 }
 
+// CARGAMOS EL data DEL JSON DEL opendata
 function imprimirTabla(data) {
     // CREAMOS EL FORMULARIO DINAMICAMENTE
     let tabla = document.createElement("table");
