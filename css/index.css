@@ -51,6 +51,8 @@ footer {
     background-color: rgb(106, 105, 179);
     color: black;
     text-align: center;
+    /* UTILIZAMOS EL Z-INDEX PARA DEFINIR LA POSICIÓN DE PRIORIDAD DE LA CAJA U ELEMENTO SOBRE OTRO: NUM + GRANDE, MÁS PRIORIDAD*/
+    z-index: 2;
 }
 
 #p_footer {
@@ -70,6 +72,11 @@ footer {
 
 /* CSS MAPA */
 #myMap {
+    /* UTILIZAMOS EL Z-INDEX PARA DEFINIR LA POSICIÓN DE PRIORIDAD DE LA CAJA U ELEMENTO SOBRE OTRO: NUM + GRANDE, MÁS PRIORIDAD*/
+    z-index: 1;
+    position: relative;
+    margin: 0 auto;
+    width: 1450px;
     height: 400px;
 }
 

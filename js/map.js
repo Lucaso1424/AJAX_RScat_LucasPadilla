@@ -1,15 +1,4 @@
 function cargarMapaLeaflet() {
-    $.getJSON({
-        // LLAMAMOS URL DEL JSON
-        url: "https://analisi.transparenciacatalunya.cat/resource/yqes-rqmp.json",
-        type: "GET",
-        data: {
-            // PONEMOS EN EL LIMITE 1000 ENTRADAS
-            "$limit": 1000,
-            "$$app_token": "EIsAhk53hwzCPMmgS0dA44ulq",
-        }
-    });
-
     const tilesProvider = "https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png";
 
     // DECLARAMOS UNA VARIABLE DONDE DEFINIMOS EL ID DEL DIV PARA IMPRIMIT EL MAPA, Y 
@@ -22,4 +11,12 @@ function cargarMapaLeaflet() {
         //tileSize: 512
         // LO AÑADIMOS A LA VARIABLE DE myMap
     }).addTo(myMap);
+
+    let marker = L.marker([41.39210, 2.170840]).addTo(myMap);
+
+    myMap.doubleClickZoom.disable();
+    myMap.on('dbclick', e => {
+        let latLng = myMap.mouseEventToLatLng(e.originalEvent);
+        L.marker([latLng.lat, latLng.lng]).addTo(myMap);
+    });
 }
