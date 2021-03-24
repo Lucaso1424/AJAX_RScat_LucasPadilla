@@ -1,9 +1,11 @@
 function cargarMapaLeaflet(data) {
     const tilesProvider = "https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png";
 
+    // CREAMOS LA LATITUD Y LONGITUD PARA GUARDAR LA INFO DEL JSON
     let latitud_mapa;
     let longitud_mapa;
 
+    // DEFINIMOS EN LAS VARIABLES LA LATITUD DE LA POSICION DEL ARRAY 0 DEL JSON
     latitud_mapa = data[0].latitud;
     longitud_mapa = data[0].longitud;
 
@@ -15,7 +17,7 @@ function cargarMapaLeaflet(data) {
         // ZOOM DEL MAPA DEL LEAFLET
         maxZoom: 18
         //tileSize: 512
-        // LO AÑADIMOS A LA VARIABLE DE myMap
+        // LO AÑADIMOS A LA VARIABLE DE myMaps
     }).addTo(myMap);
 
     let marker = L.marker([latitud_mapa, longitud_mapa]).addTo(myMap);
