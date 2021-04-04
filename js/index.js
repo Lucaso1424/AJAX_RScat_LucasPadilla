@@ -21,7 +21,7 @@ function llamadaJSON() {
 
             // APLICAMOS UN FILTRO DE LA CLAVE DEL JSON
             // COMENTAMOS EL FILTRO PARA QUE SE PUEDA UTILIZAR EL CHART2 CON MÁS DIMENSIONES
-            "dimensi": "Gran (250 treballadors/es o més)",
+            // "dimensi": "Gran (250 treballadors/es o més)",
         }
     }).done(function (data) {
         alert("S'han recollit " + data.length + " dades/entrades del JSON!");
@@ -193,7 +193,6 @@ function drawChartAddicional(data) {
         'title': 'Gràfic addicional de dimensions',
         'width': 400,
         'height': 300,
-        is3D: true
     };
 
     // DIBUJA LAS GRÁFICAS CON EL PieChart, PASANDOLE UN document-getElementById DEL DIV PARA IMPRIMIR

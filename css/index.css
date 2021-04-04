@@ -69,16 +69,22 @@ footer {
     background-color: rgb(151, 106, 224);
 }
 
-/* DIV DEL GRÁFICO CENTRADO */
 #chart_div {
-    float: left;
-    margin-left: 450px;
+    position: absolute;
+    margin: 0 auto;
+    width: 120px;;
+    left: 480px;
+    /* float: left;
+    width: 400px; */
 }
 
-/* DIV DEL GRÁFICO CENTRADO */
 #chart_div2 {
-    float: right;
-    margin-right: 450px;
+    position: relative;
+    margin: 0 auto;
+    width: 0px;
+    /* float: left;
+    width: 400px;
+    height: 350px; */
 }
 
 /* CSS MAPA */
