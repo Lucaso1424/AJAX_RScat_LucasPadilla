@@ -71,8 +71,14 @@ footer {
 
 /* DIV DEL GRÁFICO CENTRADO */
 #chart_div {
-    margin: 0 auto;
-    max-width: 430px;
+    float: left;
+    margin-left: 450px;
+}
+
+/* DIV DEL GRÁFICO CENTRADO */
+#chart_div2 {
+    float: right;
+    margin-right: 450px;
 }
 
 /* CSS MAPA */

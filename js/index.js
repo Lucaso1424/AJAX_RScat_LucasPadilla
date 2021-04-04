@@ -18,8 +18,10 @@ function llamadaJSON() {
             // PONEMOS EN EL LIMITE 1000 ENTRADAS
             "$limit": 1000,
             "$$app_token": "EIsAhk53hwzCPMmgS0dA44ulq",
+
             // APLICAMOS UN FILTRO DE LA CLAVE DEL JSON
-            "dimensi": "Gran (250 treballadors/es o més)"
+            // COMENTAMOS EL FILTRO PARA QUE SE PUEDA UTILIZAR EL CHART2 CON MÁS DIMENSIONES
+            "dimensi": "Gran (250 treballadors/es o més)",
         }
     }).done(function (data) {
         alert("S'han recollit " + data.length + " dades/entrades del JSON!");
@@ -36,6 +38,7 @@ function llamadaJSON() {
         // PARA PASAR COMO PARÁMETRO EL data (DATOS DEL JSON)
         google.charts.setOnLoadCallback(function () {
             drawChart(data);
+            drawChartAddicional(data);
         });
     });
 }
@@ -52,6 +55,7 @@ function imprimirTabla(data) {
     let info5 = document.createElement("td");
     let info6 = document.createElement("td");
     let info7 = document.createElement("td");
+    let info8 = document.createElement("td");
 
     info1.innerText = "Nom";
     info2.innerText = "Dimensió";
@@ -154,5 +158,45 @@ function drawChart(data) {
 
     // DIBUJA LAS GRÁFICAS CON EL PieChart, PASANDOLE UN document-getElementById DEL DIV PARA IMPRIMIR
     var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+    chart.draw(data_table, options);
+}
+
+function drawChartAddicional(data) {
+    // DECLARAMOS LOS LET DE LOS PROPIOS SECTORES Y LOS INICIALIZAMOS EN NULL
+    let dimensio1 = null;
+    let dimensio2 = null;
+    let dimensio3 = null;
+
+    // RECORREMOS EL FOR POR CADA VALOR DEL JSON, CON EL ATRIBUTO DE sector DEL PROPIO JSON, Y LO SUMAMOS AL CONTADOR
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].dimensi == "Gran (250 treballadors/es o més)") {
+            dimensio1++;
+        }
+        if (data[i].dimensi == "Mitjana (de 50 a 249 treballadors/es)") {
+            dimensio2++;
+        }
+        if (data[i].dimensi == "Petita (entre 10 i 49 treballadors/es)") {
+            dimensio3++;
+        }
+    }
+
+    // CREAMOS LA VARIABLE DATA PARA UTILIZAR EL DATA_TABLE
+    var data_table = google.visualization.arrayToDataTable([
+        ['Chart', 'Chart de dimensions'],
+        ['Gran (250 o més)', dimensio1],
+        ['Mitjana (50 o més)', dimensio2],
+        ['Petita (10 o més)', dimensio3],
+    ]);
+
+    // DEFINIMOS LOS ATRIBUTOS DE LA GRÁFICA
+    var options = {
+        'title': 'Gràfic addicional de dimensions',
+        'width': 400,
+        'height': 300,
+        is3D: true
+    };
+
+    // DIBUJA LAS GRÁFICAS CON EL PieChart, PASANDOLE UN document-getElementById DEL DIV PARA IMPRIMIR
+    var chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
     chart.draw(data_table, options);
 }
