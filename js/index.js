@@ -193,9 +193,11 @@ function drawChartAddicional(data) {
         'title': 'Gràfic addicional de dimensions',
         'width': 400,
         'height': 300,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
     };
 
     // DIBUJA LAS GRÁFICAS CON EL PieChart, PASANDOLE UN document-getElementById DEL DIV PARA IMPRIMIR
-    var chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
+    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
     chart.draw(data_table, options);
 }
