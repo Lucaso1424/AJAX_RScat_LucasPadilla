@@ -44,8 +44,37 @@ function llamadaJSON() {
 function imprimirTabla(data) {
     // CREAMOS EL FORMULARIO DINAMICAMENTE
     let tabla = document.createElement("table");
+    let info = document.createElement("tr");
+    let info1 = document.createElement("td");
+    let info2 = document.createElement("td");
+    let info3 = document.createElement("td");
+    let info4 = document.createElement("td");
+    let info5 = document.createElement("td");
+    let info6 = document.createElement("td");
+    let info7 = document.createElement("td");
+
+    info1.innerText = "Nom";
+    info2.innerText = "Dimensió";
+    info3.innerText = "Sector";
+    info4.innerText = "URL";
+    info5.innerText = "Latitud";
+    info6.innerText = "Longitud";
+    info7.innerText = "Object";
+
     tabla.setAttribute("class", "tabla");
     tabla.setAttribute("id", "imprimir_tabla");
+    info.setAttribute("class", "info");
+
+    // IMPRIMIMOS EL TR Y LOS TD
+    info.appendChild(info1);
+    info.appendChild(info2);
+    info.appendChild(info3);
+    info.appendChild(info4);
+    info.appendChild(info5);
+    info.appendChild(info6);
+    info.appendChild(info7);
+    
+    tabla.appendChild(info);
 
     // RECORREMOS EL FOR POR CADA VALOR DEL JSON
     for (let i = 0; i < data.length; i++) {
@@ -95,7 +124,7 @@ function drawChart(data) {
             sector2++;
         }
         if (data[i].sector == "Financer") {
-            sector3++;  
+            sector3++;
         }
         if (data[i].sector == "Farmacèutic") {
             sector4++;
@@ -107,9 +136,9 @@ function drawChart(data) {
 
     // CREAMOS LA VARIABLE DATA PARA UTILIZAR EL DATA_TABLE
     var data_table = google.visualization.arrayToDataTable([
-        ['Chart', 'Chart de sectors industrial'], 
-        ['Sector Industrial', sector1], 
-        ['Sector Alimentació', sector2], 
+        ['Chart', 'Chart de sectors industrial'],
+        ['Sector Industrial', sector1],
+        ['Sector Alimentació', sector2],
         ['Sector Financer', sector3],
         ['Sector Farmacèutic', sector4],
         ['Sector Educació', sector5],

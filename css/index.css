@@ -64,6 +64,11 @@ footer {
     padding: 12px;
 }
 
+.info {
+    font-weight: bold;
+    background-color: rgb(151, 106, 224);
+}
+
 /* DIV DEL GRÁFICO CENTRADO */
 #chart_div {
     margin: 0 auto;
